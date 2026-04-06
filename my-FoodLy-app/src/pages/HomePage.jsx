@@ -5,7 +5,7 @@ export default function HomePage() {
   return(
     <>
       <div className="bg-custom-color min-vh-100">
-        <div className="container-fluid mx-2 pt-4">
+        <div className="container-fluid pt-4">
           <div className="row">
             <div className="col d-flex align-items-center gap-2">
               <img src= {WelcomingIcon} alt="welcome" />
@@ -25,24 +25,24 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="row mt-0 gy-3">
-              <div className="col-4">
+            <div className="row mt-0 gy-3 row-cols-3">
+              <div className="col">
                 <FoodCard></FoodCard>
               </div>
 
-              <div className="col-4">
+              <div className="col">
                 <FoodCard></FoodCard>
               </div>
 
-              <div className="col-4">
+              <div className="col">
                 <FoodCard></FoodCard>
               </div>
 
-              <div className="col-4">
+              <div className="col">
                 <FoodCard></FoodCard>
               </div>
 
-              <div className="col-4">
+              <div className="col">
                 <FoodCard></FoodCard>
               </div>
             </div>

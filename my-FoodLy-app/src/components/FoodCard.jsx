@@ -7,7 +7,7 @@ import DateIcon from "../assets/DateIcon.svg"
 export default function FoodCard(){
   return(
     <>
-      <div className="card" style={{ width: "20rem" }}>
+      <div className="card" style={{ width: "28rem" }}>
         <img src={NasiGoreng} alt="Nasigoreng" className="card-img-top" />
         <div className="card-body mt-3">
           <h6 className="card-title mb-2">Nasi Goreng Spesial</h6>

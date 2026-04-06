@@ -3,6 +3,7 @@ import HomeIcon from "../assets/HomeIcon.svg"
 import SearchIcon from "../assets/SearchIcon.svg"
 import FavoritIcon from "../assets/FavoritIcon.svg"
 import LogoutIcon from "../assets/LogoutIcon.svg"
+import { Link } from "react-router-dom";
 
 
 export default function Header(){
@@ -24,17 +25,17 @@ export default function Header(){
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto gap-4">
             <li className="nav-item">
-              <a className="nav-link fw-medium d-flex align-items-center gap-2" href="#">
+              <Link className="nav-link fw-medium d-flex align-items-center gap-2" to="/">
                 <img src={HomeIcon} alt="Home" />
                 Home
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link fw-medium d-flex align-items-center gap-2" href="#">
+              <Link className="nav-link fw-medium d-flex align-items-center gap-2" to="/search">
                 <img src={SearchIcon} alt="SearchIcon" />
                 Cari
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">

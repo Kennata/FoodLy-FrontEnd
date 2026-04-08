@@ -1,8 +1,13 @@
 import { useState } from "react";
 import WhiteSearchIcon from "../assets/WhiteSearchIcon.svg"
 import FilterIcon from "../assets/FilterIcon.svg"
+import { useRecipe } from "../hooks/useRecipe";
+import FoodCard from "../components/FoodCard"
+
 
 export default function SearchPage(){
+
+  const {recipeSearchResult, searchForRecipes, formatDate} = useRecipe()
 
   const [search, setSearch] = useState("");
   return(
@@ -31,7 +36,7 @@ export default function SearchPage(){
 
               <button className="btn btn-custom d-flex align-items-center gap-3">
                   <img src={WhiteSearchIcon} alt="search" />
-                  <p className="m-0">Cari</p>
+                  <p className="m-0" onClick={() => searchForRecipes(search)}>Cari</p>
               </button>
             </div>
 
@@ -70,6 +75,26 @@ export default function SearchPage(){
 
             </div>
           </div>
+
+          <div className="row mt-0 gy-3">
+            {
+              recipeSearchResult.map(recipe => (
+                <div className="col-4" key={recipe.id}>
+
+                  <FoodCard
+                    name={recipe.title}
+                    userName={recipe.user.name}
+                    calCount={recipe.calories}
+                    likeCount={recipe.likes_count}
+                    date={formatDate(recipe.created_at)}
+
+                  />
+                </div>
+              ))
+            }
+          </div>
+
+
         </div>
       </div>
     </>

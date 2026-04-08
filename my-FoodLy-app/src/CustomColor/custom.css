@@ -4,7 +4,17 @@
   border: none;
 }
 
+.btn-custom:hover {
+  transform: scale(1.1); /* membesar 10% */
+  background-color: #FF6900;
+  color: white;
+}
+
 .brand-color {
+  color: #FF6900;
+}
+
+.brand-color:hover {
   color: #FF6900;
 }
 

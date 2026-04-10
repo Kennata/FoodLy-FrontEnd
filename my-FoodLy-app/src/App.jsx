@@ -3,6 +3,8 @@ import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage"
 import LoginPage from "./pages/LoginPage";
 import MainLayout from "./layouts/MainLayout";
+import RecipePage from "./pages/RecipePage"
+import DetailRecipePage from "./pages/DetailRecipePage"
 import { Routes, Route } from "react-router-dom";
 
 
@@ -14,6 +16,8 @@ function App() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path="search" element={<SearchPage />} />
+        <Route path="recipe" element={<RecipePage />} />
+        <Route path="detailrecipe" element={<DetailRecipePage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
     </Routes>

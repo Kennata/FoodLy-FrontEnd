@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { getRecipes } from "../services/RecipeService"
-import { searchRecipes } from "../services/RecipeService"
-import { getTopRecipes } from "../services/RecipeService"
+import { getRecipes } from "../services/ApiService"
+import { searchRecipes } from "../services/ApiService"
+import { getTopRecipes } from "../services/ApiService"
 
-export function useRecipe(){
+export function useRecipe() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString)
@@ -55,5 +55,5 @@ export function useRecipe(){
     getTop5Recipes()
   }, [])
 
-  return {recipeTerbaru, formatDate, recipeSearchResult, searchForRecipes, topRecipes}
+  return { recipeTerbaru, formatDate, recipeSearchResult, searchForRecipes, topRecipes }
 }

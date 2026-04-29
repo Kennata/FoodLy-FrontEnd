@@ -58,6 +58,14 @@ export default function RegisterPage() {
         try {
             const response = await registerUser(formData);
             console.log("Berhasil:", response);
+            // --- TAMBAHKAN LOGIKA PENYIMPANAN DI SINI ---
+            if (response.token) {
+                localStorage.setItem('token', response.token);
+                // Jika backend mengirim data user, simpan juga
+                if (response.user) {
+                    localStorage.setItem('user', JSON.stringify(response.user));
+                }
+            }
             setSuccessMessage("Registrasi Berhasil! Mengalihkan ke halaman utama...");
             setTimeout(() => {
                 navigate("/");

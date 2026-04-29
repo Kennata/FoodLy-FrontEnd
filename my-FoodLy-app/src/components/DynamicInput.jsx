@@ -1,11 +1,11 @@
 // src/components/Form/DynamicInput.jsx
-export default function DynamicInput({ label, items, onAdd, isTextArea, showNumber, placeholder }) {
+export default function DynamicInput({ label, items, onAdd, onChangeItem, isTextArea, showNumber, placeholder }) {
   const primaryColor = '#f26835';
 
   return (
     <div className="mb-4">
       <label className="form-label fw-bold">{label} *</label>
-      {items.map((_, index) => (
+      {items.map((item, index) => (
         <div className="d-flex gap-3 mb-2" key={index}>
           {showNumber && (
             <div 
@@ -21,12 +21,16 @@ export default function DynamicInput({ label, items, onAdd, isTextArea, showNumb
               className="form-control bg-light border-0 py-2 rounded-3" 
               rows="2" 
               placeholder={`${placeholder} ${index + 1}`}
+              value={item}
+              onChange={(e) => onChangeItem(index, e.target.value)}
             ></textarea>
           ) : (
             <input 
               type="text" 
               className="form-control bg-light border-0 py-2 rounded-3" 
               placeholder={`${placeholder} ${index + 1}`} 
+              value={item}
+              onChange={(e) => onChangeItem(index, e.target.value)}
             />
           )}
         </div>

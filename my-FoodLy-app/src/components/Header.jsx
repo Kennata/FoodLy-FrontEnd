@@ -3,15 +3,32 @@ import HomeIcon from "../assets/HomeIcon.svg"
 import SearchIcon from "../assets/SearchIcon.svg"
 import FavoritIcon from "../assets/FavoritIcon.svg"
 import LogoutIcon from "../assets/LogoutIcon.svg"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+export default function Header() {
+  const navigate = useNavigate();
 
-export default function Header(){
-  return (
+  const handleLogout = (e) => {
+    e.preventDefault(); 
+    
+    // 1. Hapus data dari localStorage
+    localStorage.removeItem('token');
+    localStorage.removeItem('user'); 
+
+    // 2. Beri notifikasi
+    alert("Berhasil keluar.");
+
+    // 3. Arahkan ke halaman login
+    navigate("/login");
+  }; // <--- Kurung penutup handleLogout harus di sini
+
+  return ( // <--- Return harus berada di luar handleLogout
     <nav className="navbar navbar-expand-lg bg-white shadow-sm">
       <div className="container">
-        <img src={Logo} alt="Logo" />
-        <a className="navbar-brand fw-bold ps-2 brand-color" href="#">Foodly</a>
+        <Link to="/">
+           <img src={Logo} alt="Logo" />
+        </Link>
+        <Link className="navbar-brand fw-bold ps-2 brand-color" to="/">Foodly</Link>
 
         <button 
           className="navbar-toggler" 
@@ -46,19 +63,24 @@ export default function Header(){
             </li>
 
             <li className="nav-item">
-              <a className="btn btn-custom" href="#">+ Buat Resep</a>
+              <Link className="btn btn-custom" to="/recipe">
+                + Buat Resep
+              </Link>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link fw-medium d-flex align-items-center gap-2" href="#">
+              <button 
+                className="nav-link fw-medium d-flex align-items-center gap-2 border-0 bg-transparent" 
+                onClick={handleLogout}
+                style={{ cursor: 'pointer' }}
+              >
                 <img src={LogoutIcon} alt="Logout" />
                 Keluar
-              </a>
+              </button>
             </li>
-
           </ul>
         </div>
       </div>
     </nav>
   );
-}
+} // <--- Hanya butuh satu kurung penutup untuk function Header

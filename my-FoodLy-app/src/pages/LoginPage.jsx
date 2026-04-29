@@ -45,8 +45,11 @@ export default function LoginPage() {
             const response = await loginUser(formData);
             console.log("Login Berhasil:", response);
             
-            // (Opsional) Jika Laravel mengirim token, simpan di localStorage
-            // localStorage.setItem("token", response.token);
+            if (response.token) {
+                localStorage.setItem("token", response.token);
+            } else if (response.data && response.data.token) {
+                localStorage.setItem("token", response.data.token);
+            }
 
             setSuccessMessage("Login Berhasil! Mengalihkan...");
             

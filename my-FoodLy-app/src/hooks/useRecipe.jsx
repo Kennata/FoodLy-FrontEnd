@@ -38,6 +38,19 @@ export function useRecipe() {
 
   async function searchForRecipes(nameOfRecipe, kategoriSearch, sortSearch) {
     try {
+      if (kategoriSearch === "Tanggal") {
+        kategoriSearch = "created_at"
+      }else if (kategoriSearch === "Kalori") {
+        kategoriSearch = "calories"
+      }else {
+        kategoriSearch = "likes_count"
+      }
+
+      if (sortSearch === "Ascending") {
+        sortSearch = "asc"
+      }else {
+        sortSearch = "desc"
+      }
       const data = await searchRecipes(nameOfRecipe, kategoriSearch.toLowerCase(), sortSearch.toLowerCase())
       setRecipeSearchResult(data)
     } catch (error) {

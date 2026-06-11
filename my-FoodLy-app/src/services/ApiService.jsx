@@ -15,8 +15,8 @@ export const searchRecipes = async (name, kategori, sort) => {
   const response = await FoodlyApiClient.get("/recipes", {
     params: {
       search: name,
-      kategori: kategori,
-      sort: sort
+      sort_by: kategori,
+      sort_order: sort
     },
     headers: {
       Authorization: token ? `Bearer ${token}` : ''
